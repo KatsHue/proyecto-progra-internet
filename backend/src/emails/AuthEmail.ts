@@ -11,7 +11,7 @@ export class AuthEmail {
     const msg = {
       to: user.email,
       from: process.env.EMAIL_FROM!, // Tu email verificado en SendGrid
-      subject: "UpTask - Confirma tu cuenta",
+      subject: "Better|Essay - Confirma tu cuenta",
       text: `Hola ${user.name}, confirma tu cuenta en UpTask`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -19,7 +19,7 @@ export class AuthEmail {
           <p>Has creado tu cuenta en UpTask, ya casi está todo listo, solo debes confirmar tu cuenta.</p>
           <p>Visita el siguiente enlace:</p>
           <a 
-            href="${process.env.FRONTEND_URL}/auth/confirm-account" 
+            href="${process.env.FRONTEND_URL}/api/auth/confirm-account" 
             style="display: inline-block; background-color: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 20px 0;"
           >
             Confirmar Cuenta
@@ -49,7 +49,7 @@ export class AuthEmail {
     const msg = {
       to: user.email,
       from: process.env.EMAIL_FROM!,
-      subject: "UpTask - Restablece tu contraseña",
+      subject: "Better|Essay - Restablece tu contraseña",
       text: `Hola ${user.name}, has solicitado restablecer tu contraseña`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
