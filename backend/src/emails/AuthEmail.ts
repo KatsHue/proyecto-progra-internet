@@ -10,7 +10,7 @@ export class AuthEmail {
   static sendConfirmationEmail = async (user: IEmail) => {
     // Enviar email
     await transporter.sendMail({
-      from: "BetterEssay <admin@better-essay.com>",
+      from: `"BetterEssay" <${process.env.SENDGRID_SENDER}>`,
       to: user.email,
       subject: "BetterEssay - Confirma tu cuenta",
       text: "BetterEssay - Confirma tu cuenta",
@@ -26,7 +26,7 @@ export class AuthEmail {
   static sendPasswordResetToken = async (user: IEmail) => {
     // Enviar email
     await transporter.sendMail({
-      from: "BetterEssay <admin@better-essay.com>",
+      from: `"BetterEssay" <${process.env.SENDGRID_SENDER}>`,
       to: user.email,
       subject: "BetterEssay - Reestablece tu password",
       text: "BetterEssay - Reestablece tu password",
