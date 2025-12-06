@@ -12,14 +12,14 @@ export class AuthEmail {
       to: user.email,
       from: process.env.EMAIL_FROM!, // Tu email verificado en SendGrid
       subject: "Better|Essay - Confirma tu cuenta",
-      text: `Hola ${user.name}, confirma tu cuenta en UpTask`,
+      text: `Hola ${user.name}, confirma tu cuenta en Better|Essay`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333;">Hola ${user.name}</h2>
-          <p>Has creado tu cuenta en UpTask, ya casi está todo listo, solo debes confirmar tu cuenta.</p>
+          <h2 style="color: #333;">Hola ${user.name},</h2>
+          <p>Has creado tu cuenta en Better|Essay, ya casi está todo listo, solo debes confirmar tu cuenta.</p>
           <p>Visita el siguiente enlace:</p>
           <a 
-            href="${process.env.FRONTEND_URL}/api/auth/confirm-account" 
+            href="${process.env.FRONTEND_URL}/auth/confirm-account" 
             style="display: inline-block; background-color: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 20px 0;"
           >
             Confirmar Cuenta
