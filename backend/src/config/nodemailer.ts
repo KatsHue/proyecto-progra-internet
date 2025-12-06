@@ -8,11 +8,11 @@ dotenv.config();
 
 const config = () => {
   return {
-    host: "smtp.gmail.com",
+    host: "smtp.sendgrid.net",
     port: 587,
     secure: false,
     auth: {
-      user: process.env.SMTP_USER,
+      user: "apikey",
       pass: process.env.SMTP_PASS,
     },
   };
