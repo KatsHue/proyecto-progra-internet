@@ -4,7 +4,6 @@ export const corsConfig: CorsOptions = {
   origin: function (origin, callback) {
     const whitelist = [
       "http://localhost:5173", // desarrollo local
-      "https://better-essay.onrender.com", // producción
       "https://proyecto-better-essay.onrender.com",
     ];
 
