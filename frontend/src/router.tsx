@@ -21,10 +21,6 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/test-confirm"
-          element={<div>TEST: Ruta funcionando ✅</div>}
-        />
         <Route element={<AppLayout />}>
           <Route path="/" element={<DashboardMainView />} index />
 
@@ -53,9 +49,6 @@ export default function Router() {
             element={<ForgotPasswordView />}
           />
           <Route path="/auth/new-password" element={<NewPasswordView />} />
-        </Route>
-
-        <Route element={<AuthLayout />}>
           <Route path="/404" element={<NotFound />} />
         </Route>
       </Routes>
