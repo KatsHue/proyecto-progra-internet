@@ -21,6 +21,10 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="/test-confirm"
+          element={<div>TEST: Ruta funcionando ✅</div>}
+        />
         <Route element={<AppLayout />}>
           <Route path="/" element={<DashboardMainView />} index />
 
