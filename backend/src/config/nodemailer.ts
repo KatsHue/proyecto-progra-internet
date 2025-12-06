@@ -1,21 +1,14 @@
-import nodemailer from "nodemailer";
+import sgMail from "@sendgrid/mail";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-// (solo desarrollo)
-//process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+// Configurar la API Key de SendGrid
+if (!process.env.SENDGRID_API_KEY) {
+  console.error("⚠️  SENDGRID_API_KEY no está configurada");
+} else {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  console.log("✓ SendGrid configurado correctamente");
+}
 
-const config = () => {
-  return {
-    host: "smtp.sendgrid.net",
-    port: 2525,
-    secure: false,
-    auth: {
-      user: "apikey",
-      pass: process.env.SENDGRID_API_KEY,
-    },
-  };
-};
-
-export const transporter = nodemailer.createTransport(config());
+export default sgMail;

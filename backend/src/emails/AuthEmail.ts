@@ -1,4 +1,4 @@
-import { transporter } from "../config/nodemailer";
+import sgMail from "../config/nodemailer";
 
 interface IEmail {
   email: string;
@@ -8,34 +8,78 @@ interface IEmail {
 
 export class AuthEmail {
   static sendConfirmationEmail = async (user: IEmail) => {
-    // Enviar email
-    await transporter.sendMail({
-      from: `"BetterEssay" <${process.env.SENDGRID_SENDER}>`,
+    const msg = {
       to: user.email,
-      subject: "BetterEssay - Confirma tu cuenta",
-      text: "BetterEssay - Confirma tu cuenta",
-      html: `<p> Hola ${user.name}, has creado tu cuenta en BetterEssay, ya casi esta todo listo, solo debes confirmar tu cuenta </p>
-                <p> Visita el siguiente enlace: </p>
-                <a href="${process.env.FRONTEND_URL}/auth/confirm-account">Confirmar cuenta</a>
-                <p>E ingresa el codigo: <b>${user.token}</b></p>
-                <p>Este token expira en 10 minutos</p>
-            `,
-    });
+      from: process.env.EMAIL_FROM!, // Tu email verificado en SendGrid
+      subject: "UpTask - Confirma tu cuenta",
+      text: `Hola ${user.name}, confirma tu cuenta en UpTask`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333;">Hola ${user.name}</h2>
+          <p>Has creado tu cuenta en UpTask, ya casi está todo listo, solo debes confirmar tu cuenta.</p>
+          <p>Visita el siguiente enlace:</p>
+          <a 
+            href="${process.env.FRONTEND_URL}/auth/confirm-account" 
+            style="display: inline-block; background-color: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 20px 0;"
+          >
+            Confirmar Cuenta
+          </a>
+          <p>E ingresa el código: <strong style="font-size: 20px; color: #4F46E5;">${user.token}</strong></p>
+          <p>Este token expira en 10 minutos</p>
+          <p style="color: #666; font-size: 12px; margin-top: 30px;">
+            Si tú no creaste esta cuenta, puedes ignorar este mensaje
+          </p>
+        </div>
+      `,
+    };
+
+    try {
+      await sgMail.send(msg);
+      console.log("✓ Email de confirmación enviado a:", user.email);
+    } catch (error: any) {
+      console.error("Error enviando email de confirmación:", error);
+      if (error.response) {
+        console.error("Detalles del error:", error.response.body);
+      }
+      throw new Error("Error al enviar el email de confirmación");
+    }
   };
 
   static sendPasswordResetToken = async (user: IEmail) => {
-    // Enviar email
-    await transporter.sendMail({
-      from: `"BetterEssay" <${process.env.SENDGRID_SENDER}>`,
+    const msg = {
       to: user.email,
-      subject: "BetterEssay - Reestablece tu password",
-      text: "BetterEssay - Reestablece tu password",
-      html: `<p> Hola ${user.name}, has solicitado reestablecer tu password.</p>
-                <p> Visita el siguiente enlace: </p>
-                <a href="${process.env.FRONTEND_URL}/auth/new-password">Reestablecer Password</a>
-                <p>E ingresa el codigo: <b>${user.token}</b></p>
-                <p>Este token expira en 10 minutos</p>
-            `,
-    });
+      from: process.env.EMAIL_FROM!,
+      subject: "UpTask - Restablece tu contraseña",
+      text: `Hola ${user.name}, has solicitado restablecer tu contraseña`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333;">Hola ${user.name}</h2>
+          <p>Has solicitado restablecer tu contraseña.</p>
+          <p>Visita el siguiente enlace:</p>
+          <a 
+            href="${process.env.FRONTEND_URL}/auth/new-password" 
+            style="display: inline-block; background-color: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 20px 0;"
+          >
+            Restablecer Contraseña
+          </a>
+          <p>E ingresa el código: <strong style="font-size: 20px; color: #4F46E5;">${user.token}</strong></p>
+          <p>Este token expira en 10 minutos</p>
+          <p style="color: #666; font-size: 12px; margin-top: 30px;">
+            Si tú no solicitaste este cambio, puedes ignorar este mensaje
+          </p>
+        </div>
+      `,
+    };
+
+    try {
+      await sgMail.send(msg);
+      console.log("✓ Email de restablecimiento enviado a:", user.email);
+    } catch (error: any) {
+      console.error("Error enviando email de restablecimiento:", error);
+      if (error.response) {
+        console.error("Detalles del error:", error.response.body);
+      }
+      throw new Error("Error al enviar el email de restablecimiento");
+    }
   };
 }
