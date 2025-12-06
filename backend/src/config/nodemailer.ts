@@ -9,7 +9,7 @@ dotenv.config();
 const config = () => {
   return {
     host: "smtp.sendgrid.net",
-    port: 587,
+    port: 5000,
     secure: false,
     auth: {
       user: "apikey",
