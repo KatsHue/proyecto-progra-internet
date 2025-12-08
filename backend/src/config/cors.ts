@@ -6,6 +6,7 @@ export const corsConfig: CorsOptions = {
       "http://localhost:5173", // desarrollo local
       "https://better-essay.onrender.com", // producción
       "https://proyecto-better-essay.onrender.com",
+      "https://proyecto-better-essay-frontend.onrender.com",
     ];
 
     // Permitir peticiones sin origin (como health checks de Render)
