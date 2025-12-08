@@ -19,7 +19,7 @@ export class AuthEmail {
           <p>Has creado tu cuenta en Better|Essay, ya casi está todo listo, solo debes confirmar tu cuenta.</p>
           <p>Visita el siguiente enlace:</p>
           <a 
-            href="${process.env.FRONTEND_URL}/auth/confirm-account/${user.token}"
+            href="${process.env.FRONTEND_URL}/auth/confirm-account"
             style="display: inline-block; background-color: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 20px 0;"
           >
             Confirmar Cuenta
@@ -57,7 +57,7 @@ export class AuthEmail {
           <p>Has solicitado restablecer tu contraseña.</p>
           <p>Visita el siguiente enlace:</p>
           <a 
-            href="${process.env.FRONTEND_URL}/auth/new-password/${user.token}" 
+            href="${process.env.FRONTEND_URL}/auth/new-password" 
             style="display: inline-block; background-color: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 20px 0;"
           >
             Restablecer Contraseña
