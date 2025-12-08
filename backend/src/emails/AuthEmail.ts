@@ -19,7 +19,7 @@ export class AuthEmail {
           <p>Has creado tu cuenta en Better|Essay, ya casi está todo listo, solo debes confirmar tu cuenta.</p>
           <p>Visita el siguiente enlace:</p>
           <a 
-            href="https://proyecto-better-essay.onrender.com//auth/confirm-account" 
+            href="${process.env.FRONTEND_URL}/auth/confirm-account"
             style="display: inline-block; background-color: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 20px 0;"
           >
             Confirmar Cuenta
