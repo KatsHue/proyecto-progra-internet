@@ -3,26 +3,21 @@ import { CorsOptions } from "cors";
 export const corsConfig: CorsOptions = {
   origin: function (origin, callback) {
     const whitelist = [
-      "http://localhost:5173", // desarrollo local
-      "https://better-essay.onrender.com", // producción
-      "https://proyecto-better-essay.onrender.com",
-      "https://better-essay.vercel.app",
+      process.env.FRONTEND_URL, // https://better-essay.vercel.app
+      "http://localhost:5173", // Desarrollo local
     ];
 
-    // Permitir peticiones sin origin (como health checks de Render)
-    if (!origin) {
-      return callback(null, true);
-    }
+    // Permitir todas las URLs de Vercel (producción y previews)
+    const isVercelUrl =
+      origin &&
+      (origin.includes(".vercel.app") || origin === process.env.FRONTEND_URL);
 
-    // Normaliza (por si viene con barra final)
-    const cleanOrigin = origin.replace(/\/$/, "");
-
-    if (whitelist.includes(cleanOrigin)) {
+    if (!origin || whitelist.includes(origin) || isVercelUrl) {
       callback(null, true);
     } else {
       console.log("❌ Bloqueado por CORS:", origin);
       callback(new Error("Error de CORS"));
     }
   },
-  credentials: true, // si usas cookies o auth
+  credentials: true,
 };
