@@ -10,7 +10,7 @@ export class AuthEmail {
   static sendConfirmationEmail = async (user: IEmail) => {
     const msg = {
       to: user.email,
-      from: process.env.EMAIL_FROM!, // Tu email verificado en SendGrid
+      from: process.env.EMAIL_FROM!,
       subject: "Better|Essay - Confirma tu cuenta",
       text: `Hola ${user.name}, confirma tu cuenta en Better|Essay`,
       html: `
@@ -19,12 +19,12 @@ export class AuthEmail {
           <p>Has creado tu cuenta en Better|Essay, ya casi está todo listo, solo debes confirmar tu cuenta.</p>
           <p>Visita el siguiente enlace:</p>
           <a 
-            href="${process.env.FRONTEND_URL}/auth/confirm-account"
+            href="${process.env.FRONTEND_URL}/auth/confirm-account/${user.token}"
             style="display: inline-block; background-color: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 20px 0;"
           >
             Confirmar Cuenta
           </a>
-          <p>E ingresa el código: <strong style="font-size: 20px; color: #4F46E5;">${user.token}</strong></p>
+          <p>O ingresa el código manualmente: <strong style="font-size: 20px; color: #4F46E5;">${user.token}</strong></p>
           <p>Este token expira en 10 minutos</p>
           <p style="color: #666; font-size: 12px; margin-top: 30px;">
             Si tú no creaste esta cuenta, puedes ignorar este mensaje
@@ -57,12 +57,12 @@ export class AuthEmail {
           <p>Has solicitado restablecer tu contraseña.</p>
           <p>Visita el siguiente enlace:</p>
           <a 
-            href="${process.env.FRONTEND_URL}/auth/new-password" 
+            href="${process.env.FRONTEND_URL}/auth/new-password/${user.token}" 
             style="display: inline-block; background-color: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 20px 0;"
           >
             Restablecer Contraseña
           </a>
-          <p>E ingresa el código: <strong style="font-size: 20px; color: #4F46E5;">${user.token}</strong></p>
+          <p>O ingresa el código manualmente: <strong style="font-size: 20px; color: #4F46E5;">${user.token}</strong></p>
           <p>Este token expira en 10 minutos</p>
           <p style="color: #666; font-size: 12px; margin-top: 30px;">
             Si tú no solicitaste este cambio, puedes ignorar este mensaje
