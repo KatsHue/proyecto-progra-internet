@@ -21,6 +21,21 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route element={<AuthLayout />}>
+          <Route path="/auth/login" element={<LoginView />} />
+          <Route path="/auth/register" element={<RegisterView />} />
+          <Route
+            path="/auth/confirm-account"
+            element={<ConfirmAccountView />}
+          />
+          <Route path="/auth/request-code" element={<RequestNewCodeView />} />
+          <Route
+            path="/auth/forgot-password"
+            element={<ForgotPasswordView />}
+          />
+          <Route path="/auth/new-password" element={<NewPasswordView />} />
+        </Route>
+
         <Route element={<AppLayout />}>
           <Route path="/" element={<DashboardMainView />} index />
 
@@ -36,21 +51,7 @@ export default function Router() {
           </Route>
         </Route>
 
-        <Route element={<AuthLayout />}>
-          <Route path="/auth/login" element={<LoginView />} />
-          <Route path="/auth/register" element={<RegisterView />} />
-          <Route
-            path="/auth/confirm-account"
-            element={<ConfirmAccountView />}
-          />
-          <Route path="/auth/request-code" element={<RequestNewCodeView />} />
-          <Route
-            path="/auth/forgot-password"
-            element={<ForgotPasswordView />}
-          />
-          <Route path="/auth/new-password" element={<NewPasswordView />} />
-          <Route path="/404" element={<NotFound />} />
-        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
