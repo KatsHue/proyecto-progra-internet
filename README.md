@@ -3,7 +3,7 @@
 <h2 align="center">✍️ Better | Essay (Mejorado) </h2>
 
 Aplicación web que **corrige ensayos y genera resúmenes** automáticamente utilizando modelos de **Inteligencia Artificial**.  
-Desarrollada con **React + Node.js + Express + MongoDB Atlas + FastAPI**, e integrada con **OpenRouter (GPT-4o-mini)** y **Hugging Face (DistilBART)**.
+Desarrollada con **React + Node.js + Express + MongoDB Atlas + FastAPI**, e integrada con **OpenRouter (GPT-4o-mini)** y **Hugging Face (facebook/mbart-large-50, usado en lugar de DistilBART debido a su mayor capacidad multilingüe y mejor rendimiento en textos largos).**.
 
 > 💡 Asegúrate de abrir primero el backend y esperar a que cargue para iniciar sesión correctamente: <br>
 > **Puedes usar este usuario y contraseña si no deseas registrarte:**<br>
@@ -11,9 +11,9 @@ Desarrollada con **React + Node.js + Express + MongoDB Atlas + FastAPI**, e inte
 
 <br>
 
-<a href="https://better-essay-backend.onrender.com/" target="_blank"><strong>⚙️ Backend</strong></a>  
-<a href="https://better-essay.onrender.com" target="_blank"><strong>💻 Demo</strong></a> <br>
-<a href="https://www.canva.com/design/DAG3tIi2qmI/jpfOvWAge-Bh3ccu_Tk2nw/view?utlId=h810319d3f4#1" target="_blank"><strong>Presentación</strong></a>  
+<a href="https://proyecto-backend-betteressay.onrender.com" target="_blank"><strong>⚙️ Backend</strong></a>  
+<a href="https://proyecto-better-essay.onrender.com" target="_blank"><strong>💻 Demo</strong></a> <br>
+<a href="https://www.canva.com/design/DAG6rEeO8Z4/ZklRofuhZL_9mmEs9fwRbw/edit?utm_content=DAG6rEeO8Z4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank"><strong>Presentación</strong></a>  
 
 <br><br>
 📚 <strong>Programación para Internet 2025B</strong>
@@ -41,7 +41,7 @@ MongoDB Atlas (Base de datos)
    ↓
 Servicios IA:
    ├── OpenRouter (GPT-4o-mini) → Corrección de ensayos
-   └── Hugging Face (DistilBART) → Generación de resúmenes
+   └── Hugging Face (mBART) → Generación de resúmenes
 ```
 
 ## Capturas
@@ -62,13 +62,13 @@ Servicios IA:
 ### Clona el repositorio
 
 ```sh
-git clone https://github.com/KatsHue/better-essay.git
+git clone https://github.com/KatsHue/proyecto-progra-internet.git
 ```
 
 ### Entra a la carpeta del backend
 
 ```sh
-cd better-essay
+cd proyecto-progra-internet
 cd backend
 ```
 
@@ -85,11 +85,9 @@ DATABASE_URL = tu_uri_de_mongodb_atlas_aqui (Debes crear una base de datos para 
 
 FRONTEND_URL=http://localhost:5173
 
-(gmail)
-SMTP_HOST= smtp.gmail.com
-SMTP_PORT= 465
-SMTP_USER= tu_correo_aqui@gmail.com
-SMTP_PASS= tu_contraseña_de_aplicacion
+(sendgrid)
+SENDGRID_API_KEY=tu_clave_de_aplicacion_sendgrid
+EMAIL_FROM=tu_correo_activado_en_sendgrid
 
 JWT_SECRET=tu_clave_secreta_aqui
 ```
