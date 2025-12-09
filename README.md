@@ -9,6 +9,8 @@ Desarrollada con **React + Node.js + Express + MongoDB Atlas + FastAPI**, e inte
 > **Puedes usar este usuario y contraseña si no deseas registrarte:**<br>
 > **usuario: correo@gmail.com | contraseña: password**
 
+> 💡 Error de registro de usuarios nuevos arreglado <br>
+
 <br>
 
 <a href="https://proyecto-backend-betteressay.onrender.com" target="_blank"><strong>⚙️ Backend</strong></a>  
