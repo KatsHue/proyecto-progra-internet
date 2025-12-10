@@ -6,8 +6,6 @@ Aplicación web que **corrige ensayos y genera resúmenes** automáticamente uti
 Desarrollada con **React + Node.js + Express + MongoDB Atlas + FastAPI**, e integrada con **OpenRouter (GPT-4o-mini)** y **Hugging Face (facebook/mbart-large-50, usado en lugar de DistilBART debido a su mayor capacidad multilingüe y mejor rendimiento en textos largos).**.
 
 > 💡 Asegúrate de abrir primero el backend y esperar a que cargue para iniciar sesión correctamente: <br>
-> **Puedes usar este usuario y contraseña si no deseas registrarte:**<br>
-> **usuario: correo@gmail.com | contraseña: password**
 
 > 💡 Error de registro de usuarios nuevos arreglado <br>
 
